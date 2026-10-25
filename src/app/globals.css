@@ -240,30 +240,40 @@ body {
   overflow: visible;
   margin-inline: auto;
 }
+/* At rest the mark sits centred on the black stage; it rises into place as the headline arrives. */
+.hero .shift {
+  transform: translateY(calc((1 - var(--a)) * 14vh));
+}
 .hero .mark .steel {
   transform: translate(calc((1 - var(--a)) * -90px), 0);
 }
 .hero .mark .lit-layer {
   transform: translate(calc((1 - var(--a)) * 120px), calc((1 - var(--a)) * -44px));
-  opacity: calc(0.16 + var(--a) * 0.84);
-  filter: drop-shadow(0 0 calc(var(--a) * 30px) rgba(229, 185, 111, 0.75));
+  filter: drop-shadow(0 0 calc(16px + var(--a) * 14px) rgba(229, 185, 111, 0.75));
 }
-/* On load the two layers fade up from black (steel, then lit); scrolling then brings them together.
-   Keyframes set only the start, so each layer settles on its own scroll-driven opacity. */
+/* On load the stage starts black. The steel L fades up, then the lit L fades up into its warm glow;
+   scrolling then brings them together. Keyframes set only the start state, so each layer settles on its
+   own resting style. CSS-only, so the hidden first frame is in the server-rendered page. */
 @keyframes fade-in {
   from {
     opacity: 0;
   }
 }
+@keyframes light-up {
+  from {
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(229, 185, 111, 0));
+  }
+}
 .hero .mark .steel {
-  animation: fade-in 1100ms var(--ease-out) 150ms backwards;
+  animation: fade-in 1400ms var(--ease-out) 400ms backwards;
 }
 .hero .mark .lit-layer {
-  animation: fade-in 1100ms var(--ease-out) 650ms backwards;
+  animation: light-up 1800ms var(--ease-out) 1100ms backwards;
 }
 .hero .stick > .wrap > .eyebrow,
 .hero .stick > a {
-  animation: fade-in 900ms var(--ease-out) 1200ms backwards;
+  animation: fade-in 900ms var(--ease-out) 2300ms backwards;
 }
 .hero .word {
   display: inline-block;

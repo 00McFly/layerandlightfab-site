@@ -22,13 +22,13 @@ export function Hero() {
       <div className="stick">
         <div className="wrap w-full pt-[var(--header-h)]">
           <p className="eyebrow early absolute inset-x-0 top-[calc(var(--header-h)+8vh)] justify-center px-4">Custom fabrication · Creative production</p>
-          <LogoMark className="mark" />
-          <h1 id="hero-title" className="display mt-9 text-[clamp(30px,5.4vw,72px)]">
+          <LogoMark className="mark shift" />
+          <h1 id="hero-title" className="display shift mt-9 text-[clamp(30px,5.4vw,72px)]">
             <span className="word" style={at(0.3)}>Ideas,</span>{" "}
             <span className="word" style={at(0.4)}>built</span>{" "}
             <span className="word lit" style={at(0.5)}>layer by layer.</span>
           </h1>
-          <div className="late">
+          <div className="late shift">
             <p className="mx-auto mt-6 max-w-[52ch] text-[17px]">
               Props, scenic elements, 3D printing and full-color UV printing, built on years in themed entertainment, including
               extensive work at Universal Studios.
