@@ -19,9 +19,10 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.description,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Layer & Light Fabrication logo" }],
+    // Rendered from og/card.html. Give a new card a new filename so cached previews refresh.
+    images: [{ url: "/og-v2.jpg", width: 1200, height: 630, alt: "Layer & Light Fabrication: Ideas, built layer by layer." }],
   },
-  twitter: { card: "summary_large_image", title: site.name, description: site.description, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: site.name, description: site.description, images: ["/og-v2.jpg"] },
 };
 
 export const viewport: Viewport = { themeColor: "#000000", colorScheme: "dark" };

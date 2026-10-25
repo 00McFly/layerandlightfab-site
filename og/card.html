@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share card</title>
+<!-- Source for the share card, public/og-v2.jpg (1200×630). To change it: edit this file, serve the site/ folder,
+     screenshot this page at 1200×630, save as a NEW public/og-vN.jpg, and update the filename in src/app/layout.tsx. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1200px;height:630px;background:#000;overflow:hidden}
+  .card{position:relative;width:1200px;height:630px;overflow:hidden;font-family:Montserrat,sans-serif;
+    background:
+      radial-gradient(ellipse 46% 60% at 27% 50%,rgba(217,154,62,.30),rgba(217,154,62,0) 70%),
+      radial-gradient(ellipse 80% 90% at 100% 100%,rgba(217,154,62,.07),rgba(0,0,0,0) 60%),
+      #000}
+  /* faint print layers across the stage */
+  .layers{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(241,241,240,.035) 0 1px,transparent 1px 9px);
+    -webkit-mask-image:radial-gradient(ellipse 60% 80% at 27% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse 60% 80% at 27% 50%,#000,transparent 75%)}
+  .frame{position:absolute;inset:28px;border:1px solid rgba(241,241,240,.10);border-radius:18px}
+  .mark{position:absolute;left:104px;top:124px;width:360px;height:auto;overflow:visible}
+  .mark .lit{filter:drop-shadow(0 0 22px rgba(229,185,111,.85)) drop-shadow(0 0 4px rgba(255,239,204,.9))}
+  .mark .steel{fill:url(#steel)}
+  .copy{position:absolute;left:548px;right:72px;top:132px}
+  .eyebrow{font-weight:500;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#919190}
+  .eyebrow b{font:500 16px "IBM Plex Mono",monospace;letter-spacing:0;color:#e5b96f;margin-right:14px}
+  h1{margin-top:24px;font-weight:400;font-size:54px;line-height:1.04;letter-spacing:.05em;text-transform:uppercase;color:#c3c3c1}
+  h1 span{display:block;color:#ffefcc;text-shadow:0 0 28px rgba(229,185,111,.45),0 0 2px rgba(255,239,204,.8)}
+  .word{margin-top:44px;width:430px;height:auto;display:block;mix-blend-mode:screen}
+  .foot{position:absolute;left:84px;right:84px;bottom:62px;display:flex;justify-content:space-between;align-items:center;
+    font:400 17px "IBM Plex Mono",monospace;color:#919190}
+  .foot .url{color:#ffefcc;font-weight:500;letter-spacing:.02em}
+  .foot .dot{color:#e5b96f}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="layers"></div>
+  <div class="frame"></div>
+  <svg class="mark" viewBox="0 0 533.667 548.374" aria-hidden="true">
+    <defs>
+      <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e2e2e0"/><stop offset=".45" stop-color="#9a9a99"/><stop offset=".62" stop-color="#cfcfcd"/><stop offset="1" stop-color="#7a7a7b"/>
+      </linearGradient>
+    </defs>
+    <path class="steel" d="M171.58,464.01V0L0,126.2v312.1l160.888,110.074h108.51l-202.497-136.564h-.54l1.65-329.47,17.72-13.01v336.97l85.85,57.71Z"/>
+    <path class="lit" fill="#ffefcc" d="M269.583,426.516h-73.224V82.924l73.224,66.096v277.496ZM197.316,438.32h250.594l85.757,77.834h-239.56l-96.79-77.834Z"/>
+  </svg>
+  <div class="copy">
+    <div class="eyebrow">Custom fabrication · Creative production</div>
+    <h1>Ideas, built <span>layer by layer.</span></h1>
+    <img class="word" src="../public/brand/logo-wordmark.png" alt="Layer &amp; Light Fabrication">
+  </div>
+  <div class="foot">
+    <span>Props <span class="dot">·</span> 3D printing <span class="dot">·</span> UV printing <span class="dot">·</span> Casting <span class="dot">·</span> LED</span>
+    <span class="url">layerandlightfab.com</span>
+  </div>
+</div>
+</body>
+</html>

@@ -16,7 +16,7 @@ const jsonLd = {
   url: site.url,
   email: site.email,
   description: site.description,
-  logo: `${site.url}/og.png`,
+  logo: `${site.url}/apple-icon.png`,
 };
 
 export default function Home() {
