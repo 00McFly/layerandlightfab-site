@@ -1,26 +1,371 @@
 @import "tailwindcss";
 
+/* Brand tokens from design-system/tokens. Steven's override: pill controls, 18px card corners. */
+@theme {
+  --color-void-0: #000000;
+  --color-void-50: #070708;
+  --color-void-100: #0d0d0f;
+  --color-void-200: #141416;
+  --color-void-300: #1c1c1f;
+  --color-void-400: #26262a;
+  --color-steel-100: #f1f1f0;
+  --color-steel-200: #dededc;
+  --color-steel-300: #c3c3c1;
+  --color-steel-400: #a4a4a2;
+  --color-steel-500: #919190;
+  --color-steel-600: #747374;
+  --color-steel-700: #57575a;
+  --color-light-50: #fff8ea;
+  --color-light-100: #ffefcc;
+  --color-light-200: #f7dca8;
+  --color-light-400: #e5b96f;
+  --color-light-500: #d99a3e;
+
+  --font-display: var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-plex-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+  --radius-card: 18px;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --text-strong: var(--color-steel-100);
+  --text-body: var(--color-steel-300);
+  --text-muted: var(--color-steel-500);
+  --text-lit: var(--color-light-100);
+  --text-accent: var(--color-light-400);
+  --border-subtle: rgba(241, 241, 240, 0.08);
+  --border-default: rgba(241, 241, 240, 0.14);
+  --border-lit: rgba(229, 185, 111, 0.55);
+  --glow-sm: 0 0 12px rgba(229, 185, 111, 0.35);
+  --glow-md: 0 0 28px rgba(229, 185, 111, 0.35), 0 0 2px rgba(255, 239, 204, 0.8);
+  --glow-lg: 0 0 64px rgba(217, 154, 62, 0.38), 0 0 8px rgba(255, 239, 204, 0.6);
+  --gradient-halo: radial-gradient(ellipse at center, rgba(217, 154, 62, 0.22) 0%, rgba(217, 154, 62, 0) 65%);
+  --container-pad: clamp(16px, 5vw, 64px);
+  --header-h: 64px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  background: var(--color-void-0);
+  overflow-x: clip; /* nothing may scroll the page sideways; clip (not hidden) keeps sticky sections working */
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+body {
+  background: var(--color-void-0);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: clip;
+}
+::selection {
+  background: var(--color-light-400);
+  color: var(--color-void-0);
+}
+:focus-visible {
+  outline: 2px solid var(--color-light-200);
+  outline-offset: 3px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .wrap {
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: 500 11px/1.2 var(--font-display);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .eyebrow b {
+    font: 500 12px var(--font-mono);
+    letter-spacing: 0;
+    color: var(--text-accent);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.04;
+    color: var(--color-steel-300);
+    text-wrap: balance;
+  }
+  .h2 {
+    font: 400 clamp(26px, 3.4vw, 44px) / 1.1 var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-strong);
+    text-wrap: balance;
+  }
+  .lit {
+    color: var(--text-lit);
+    text-shadow: var(--glow-md);
+  }
+  .spec {
+    font: 400 12px/1.5 var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  /* Pills */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    border: 1px solid var(--border-default);
+    font: 500 12px var(--font-display);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-strong);
+    white-space: nowrap;
+    transition: color 220ms var(--ease-out), border-color 220ms var(--ease-out), background-color 220ms var(--ease-out),
+      box-shadow 220ms var(--ease-out), transform 120ms var(--ease-out);
+  }
+  .btn:hover {
+    border-color: var(--border-lit);
+    color: var(--text-lit);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn svg {
+    transition: transform 220ms var(--ease-out);
+  }
+  .btn:hover svg {
+    transform: translateX(3px);
+  }
+  .btn-primary {
+    background: var(--color-light-50);
+    border-color: transparent;
+    color: var(--color-void-0);
+    box-shadow: var(--glow-md);
+  }
+  .btn-primary:hover {
+    background: var(--color-light-100);
+    color: var(--color-void-0);
+    box-shadow: var(--glow-lg);
+  }
+  .btn-sm {
+    height: 38px;
+    padding: 0 18px;
+    font-size: 11px;
+  }
+  .chip {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-default);
+    font: 500 11px var(--font-display);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: all 220ms var(--ease-out);
+  }
+  .chip:hover {
+    color: var(--text-strong);
+  }
+  .chip[aria-pressed="true"] {
+    border-color: var(--border-lit);
+    color: var(--text-lit);
+    box-shadow: var(--glow-sm);
+  }
+  .tag {
+    display: inline-flex;
+    height: 26px;
+    align-items: center;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-subtle);
+    font: 400 11px var(--font-mono);
+    color: var(--text-muted);
+  }
+
+  /* Honest photo placeholder: hatch + label */
+  .placeholder {
+    background: var(--gradient-halo),
+      repeating-linear-gradient(135deg, rgba(241, 241, 240, 0.035) 0 1px, transparent 1px 14px), var(--color-void-100);
+  }
+
+  /* Reveal on scroll (Reveal component adds .in) */
+  .rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  }
+  .rv.in {
+    opacity: 1;
+    transform: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Scroll scenes. Each scene element gets --p (0..1) from useScrollScene. ---------- */
+
+.pin {
+  position: relative;
+}
+.pin > .stick {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* Hero: the mark's steel and lit layers slide together, then the headline lands. */
+.hero {
+  height: 280vh;
+  margin-top: calc(-1 * var(--header-h)); /* sit under the sticky header so the pinned frame is the full screen */
+  --a: clamp(0, calc(var(--p, 0) / 0.6), 1); /* assembly */
+}
+.hero .stick {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse 60% 50% at 50% 42%, rgba(217, 154, 62, calc(var(--a) * 0.24)), transparent 70%);
+}
+.hero .mark {
+  width: min(46vw, 26vh, 280px);
+  overflow: visible;
+  margin-inline: auto;
+}
+.hero .mark .steel {
+  transform: translate(calc((1 - var(--a)) * -90px), 0);
+}
+.hero .mark .lit-layer {
+  transform: translate(calc((1 - var(--a)) * 120px), calc((1 - var(--a)) * -44px));
+  opacity: calc(0.16 + var(--a) * 0.84);
+  filter: drop-shadow(0 0 calc(var(--a) * 30px) rgba(229, 185, 111, 0.75));
+}
+/* On load the two layers fade up from black (steel, then lit); scrolling then brings them together.
+   Keyframes set only the start, so each layer settles on its own scroll-driven opacity. */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.hero .mark .steel {
+  animation: fade-in 1100ms var(--ease-out) 150ms backwards;
+}
+.hero .mark .lit-layer {
+  animation: fade-in 1100ms var(--ease-out) 650ms backwards;
+}
+.hero .stick > .wrap > .eyebrow,
+.hero .stick > a {
+  animation: fade-in 900ms var(--ease-out) 1200ms backwards;
+}
+.hero .word {
+  display: inline-block;
+  opacity: clamp(0, calc((var(--p, 0) - var(--at)) * 9), 1);
+  transform: translateY(calc((1 - clamp(0, calc((var(--p, 0) - var(--at)) * 9), 1)) * 18px));
+}
+.hero .late {
+  opacity: clamp(0, calc((var(--p, 0) - 0.74) * 8), 1);
+}
+.hero .early {
+  opacity: clamp(0, calc(1 - var(--p, 0) * 5), 1);
+}
+@media (max-width: 760px) {
+  .hero {
+    height: 230vh;
+  }
+}
+
+/* Statement: words light up one by one as the paragraph passes through. */
+.statement .w {
+  white-space: nowrap;
+  opacity: clamp(0.16, calc(var(--p, 0) * var(--n) * 1.25 - var(--i)), 1);
+  transition: opacity 120ms linear;
+}
+
+/* Services: cards pin and stack like layers; the one underneath steps back a little. */
+.layer-card {
+  position: sticky;
+  top: calc(var(--header-h) + 20px + var(--i) * 14px);
+  transform-origin: 50% 0;
+  transform: scale(var(--s, 1));
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Selected work: vertical scroll drives the strip sideways. */
+.strip .track {
+  will-change: transform;
+}
+
+/* Approach: a lit line fills as you read down. */
+.approach-line {
+  transform-origin: 0 0;
+  transform: scaleY(var(--p, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rv {
+    opacity: 1;
+    transform: none;
+  }
+  /* Nothing pins. Scenes render in their finished state; the strip becomes a swipeable row. */
+  .hero {
+    height: auto;
+    --p: 1 !important;
+  }
+  .hero {
+    margin-top: 0;
+  }
+  .hero .mark .steel,
+  .hero .mark .lit-layer,
+  .hero .stick > .wrap > .eyebrow,
+  .hero .stick > a {
+    animation: none;
+  }
+  .hero .stick {
+    position: relative;
+    height: auto;
+    padding: 120px 0 96px;
+  }
+  .statement {
+    --p: 1 !important;
+  }
+  .layer-card {
+    position: relative;
+    top: auto;
+    transform: none;
+  }
+  .strip {
+    height: auto !important;
+  }
+  .strip .stick {
+    position: relative;
+    height: auto;
+    padding: 96px 0 32px;
+  }
+  .strip .track {
+    transform: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+  }
+  .strip .track > * {
+    scroll-snap-align: start;
+  }
+  .approach-line {
+    transform: none;
+  }
 }

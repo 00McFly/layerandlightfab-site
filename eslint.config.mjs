@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Throwaway direction mockups (plain HTML/JS).
+    "mockups/**",
   ]),
 ]);
 

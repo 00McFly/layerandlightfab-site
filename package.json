@@ -1,14 +1,17 @@
 {
-  "name": "web",
+  "name": "layer-light-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3422",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "npx --yes serve@14.2.4 out -l 3422",
+    "lint": "eslint",
+    "photos": "node scripts/sync-photos.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "next": "16.4.3",
     "react": "19.3.0",
     "react-dom": "19.3.0"
@@ -20,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

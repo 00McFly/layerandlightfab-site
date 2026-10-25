@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# originals stay local; the web sizes in public/work are what ships
+/photos/**/*
+!/photos/**/
+!/photos/**/.gitkeep
+
+# direction mockups (A/B/C) stay local; they are not part of the site
+/mockups/
