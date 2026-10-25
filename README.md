@@ -50,20 +50,27 @@ When the device asks for reduced motion, nothing pins and everything shows in it
 
 ## Deploying to layerandlightfab.com
 
-`npm run build` produces `out/`, a folder of static files that any static host can serve. Nothing has been deployed yet.
+The code lives at **github.com/00McFly/layerandlightfab-site** (private). The plan is for Netlify to build from it, so every push to `main` updates the live site. Netlify reads `netlify.toml` for the build settings:
+- build command `npm run build`
+- publish directory `out`
+- Node 22
 
-**Recommended: Netlify or Cloudflare Pages.** Both are free at this size, give you HTTPS automatically, and read `public/_headers` for the security and cache headers.
+### One-time Netlify setup (Jim's Netlify account, since he owns the repo)
 
-1. Push this `site/` folder to a GitHub repository (it already has its own git repo).
-2. Create a new site from that repository, with build command `npm run build` and output directory `out`.
-3. Add the custom domain `layerandlightfab.com` (and `www.layerandlightfab.com`, set to redirect to the apex).
-4. At the domain registrar, point DNS at the host as its dashboard instructs:
-   - Cloudflare Pages: easiest if the domain's DNS moves to Cloudflare.
-   - Netlify: either Netlify DNS, or an `ALIAS`/`A` record for the apex plus a `CNAME` for `www`.
-5. Wait for the certificate, then check: https://layerandlightfab.com loads, `www` redirects, and pasting the link in Messages shows the logo card (`/og.png`).
+1. In Netlify, open the site, go to **Site configuration → Build & deploy → Continuous deployment**, and choose **Link repository** (or **Add new site → Import an existing project**).
+2. Pick **GitHub** and authorize the Netlify app for the `00McFly/layerandlightfab-site` repo. It's private, so the app needs access to it.
+3. Set the branch to `main`. Leave the build fields as they are; `netlify.toml` fills them in.
+4. Deploy, then open the `*.netlify.app` preview and check it.
+5. Under **Domain management**, add `layerandlightfab.com` and `www.layerandlightfab.com`, set the apex as primary, and follow Netlify's DNS instructions at the registrar. HTTPS turns on by itself once DNS resolves.
 
-**Alternatives:**
-- Vercel works the same way, using its own header settings instead of `_headers`.
-- The home server (via the `deploy-app` skill) can serve `out/` behind nginx and cloudflared.
+### Publishing an update
 
-If we later add an animated link-preview video, don't host the MP4 on Cloudflare Pages. It doesn't answer byte-range requests, so Messages falls back to the still image.
+```bash
+git add -A
+git commit -m "What changed"
+git push
+```
+
+Netlify rebuilds in about a minute. Every pull request also gets its own preview URL.
+
+If we later add an animated link-preview video, don't host the MP4 on Cloudflare Pages. It doesn't answer byte-range requests, so Messages falls back to the still image. Netlify is fine for this; check with `curl -s -o /dev/null -D - -H "Range: bytes=0-1023" URL`, which should return `206`.
