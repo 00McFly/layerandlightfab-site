@@ -39,7 +39,7 @@ export function Statement() {
         {[
           ["No two projects alike", "Every job begins with an idea, a challenge, or a vision."],
           ["One piece or a whole install", "The same precision for a single custom piece or a larger installation."],
-          ["Themed entertainment roots", "Years in the attraction industry, including extensive work at Universal Studios."],
+          ["Themed entertainment roots", "Decades in the attraction industry, from major theme parks to live productions."],
         ].map(([t, d], i) => (
           <Reveal key={t} delay={i * 90}>
             <div className="font-display text-[14px] uppercase tracking-[0.14em] text-steel-100">{t}</div>

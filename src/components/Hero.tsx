@@ -30,8 +30,8 @@ export function Hero() {
           </h1>
           <div className="late shift">
             <p className="mx-auto mt-6 max-w-[52ch] text-[17px]">
-              Props, scenic elements, 3D printing and full-color UV printing, built on years in themed entertainment, including
-              extensive work at Universal Studios.
+              Props, scenic elements, 3D printing and full-color UV printing, built on decades in themed
+              entertainment.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a className="btn btn-primary" href={mailto()}>
