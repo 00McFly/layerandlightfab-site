@@ -1,14 +1,14 @@
 [
   {
-    "id": "slot-01",
-    "title": "",
+    "id": "hydro-chrome-turbine",
+    "title": "Turbine prop, hydro-chrome",
     "category": "props",
-    "spec": "",
-    "alt": "",
+    "spec": "Hydro-chrome finish · mirror chrome, no plating",
+    "alt": "Tall turbine-style prop with dense mechanical detail, finished in mirror-bright hydro-chrome",
     "featured": true,
-    "src": null,
-    "width": null,
-    "height": null
+    "src": "/work/hydro-chrome-turbine",
+    "width": 889,
+    "height": 1800
   },
   {
     "id": "slot-02",
