@@ -1,9 +1,20 @@
 [
   {
+    "id": "ark-replica",
+    "title": "Full-size Ark replica",
+    "category": "props",
+    "spec": "Sculpted \u00b7 cast \u00b7 gilded finish \u00b7 full scale",
+    "alt": "Full-size gilded ark replica with two kneeling winged figures on the lid, carrying rings and a sculpted relief panel on the side",
+    "featured": true,
+    "src": "/work/ark-replica",
+    "width": 1800,
+    "height": 1213
+  },
+  {
     "id": "hydro-chrome-turbine",
     "title": "Turbine prop, hydro-chrome",
     "category": "props",
-    "spec": "Hydro-chrome finish · mirror chrome, no plating",
+    "spec": "Hydro-chrome finish \u00b7 mirror chrome, no plating",
     "alt": "Tall turbine-style prop with dense mechanical detail, finished in mirror-bright hydro-chrome",
     "featured": true,
     "src": "/work/hydro-chrome-turbine",
@@ -47,17 +58,6 @@
     "id": "slot-05",
     "title": "",
     "category": "design",
-    "spec": "",
-    "alt": "",
-    "featured": true,
-    "src": null,
-    "width": null,
-    "height": null
-  },
-  {
-    "id": "slot-06",
-    "title": "",
-    "category": "props",
     "spec": "",
     "alt": "",
     "featured": true,
