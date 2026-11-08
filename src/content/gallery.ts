@@ -12,6 +12,7 @@ export type WorkItem = {
   description?: string;
   featured: boolean; // shows in the sideways "Selected work" strip
   src: string | null;
+  video?: boolean; // true: also has `${src}-800.mp4` / `${src}-1800.mp4`; the webp sizes are its poster
   width: number | null;
   height: number | null;
 };

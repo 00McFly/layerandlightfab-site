@@ -22,15 +22,16 @@
     "height": 1800
   },
   {
-    "id": "slot-02",
-    "title": "",
-    "category": "3d-printing",
-    "spec": "",
-    "alt": "",
+    "id": "replica-prop-exploded-assembly",
+    "title": "Replica film prop, exploded assembly",
+    "category": "props",
+    "spec": "Modeled in Fusion \u00b7 glass tubes \u00b7 exploded view",
+    "alt": "Animated exploded view of a replica film prop: two hexagonal metal end blocks, three clear glass tubes and six silver cones fly apart and reassemble",
     "featured": true,
-    "src": null,
-    "width": null,
-    "height": null
+    "src": "/work/replica-prop-exploded-assembly",
+    "video": true,
+    "width": 1920,
+    "height": 1080
   },
   {
     "id": "slot-03",

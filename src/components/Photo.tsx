@@ -12,13 +12,36 @@ export function Photo({
   label,
   eager = false,
 }: {
-  item: Pick<WorkItem, "id" | "src" | "alt" | "title" | "category" | "width" | "height">;
+  item: Pick<WorkItem, "id" | "src" | "alt" | "title" | "category" | "width" | "height" | "video">;
   size?: "grid" | "full";
   sizes?: string;
   fit?: "cover" | "contain";
   label?: string;
   eager?: boolean;
 }) {
+  if (item.src && item.video) {
+    const w = size === "full" ? 1800 : 800;
+    return (
+      <video
+        key={w}
+        src={`${item.src}-${w}.mp4`}
+        poster={`${item.src}-${w}.webp`}
+        width={item.width ?? undefined}
+        height={item.height ?? undefined}
+        aria-label={item.alt || item.title}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload={eager ? "auto" : "metadata"}
+        ref={(v) => {
+          // Respect reduced motion: show the poster frame and leave it still.
+          if (v && matchMedia("(prefers-reduced-motion: reduce)").matches) v.pause();
+        }}
+        className={`absolute inset-0 h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
+      />
+    );
+  }
   if (item.src) {
     const small = `${item.src}-800.webp`;
     const large = `${item.src}-1800.webp`;
