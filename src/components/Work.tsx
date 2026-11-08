@@ -72,7 +72,7 @@ function Strip({ onOpen }: { onOpen: (items: WorkItem[], i: number) => void }) {
             01 / {String(items.length).padStart(2, "0")}
           </span>
         </div>
-        <div ref={track} className="track flex gap-4 px-[var(--container-pad)]">
+        <div ref={track} className="track flex items-center gap-4 px-[var(--container-pad)]">
           {items.map((it, i) => {
             const r = it.width && it.height ? it.width / it.height : [4 / 5, 3 / 2, 1, 4 / 3, 2 / 3, 16 / 10][i % 6];
             return (
@@ -81,8 +81,9 @@ function Strip({ onOpen }: { onOpen: (items: WorkItem[], i: number) => void }) {
                 type="button"
                 onClick={() => onOpen(items, i)}
                 aria-label={`Open ${it.title || categoryLabel(it.category)}`}
-                className="group relative h-[min(56vh,520px)] flex-none cursor-zoom-in overflow-hidden rounded-[var(--radius-card)] border border-[var(--border-subtle)] transition-colors hover:border-[var(--border-lit)] max-sm:h-[50vh]"
-                style={{ aspectRatio: r }}
+                className="group relative flex-none cursor-zoom-in overflow-hidden rounded-[var(--radius-card)] border border-[var(--border-subtle)] transition-colors [--h:min(56vh,520px)] hover:border-[var(--border-lit)] max-sm:[--h:50vh]"
+                // Wide pieces shrink to fit the screen width (phones held upright) instead of being cropped.
+                style={{ aspectRatio: r, height: `min(var(--h), calc(88vw / ${r}))` }}
               >
                 <div className="absolute inset-0 transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.03]">
                   <Photo item={it} sizes="(max-width: 640px) 80vw, 40vw" />
