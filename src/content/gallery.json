@@ -34,6 +34,18 @@
     "height": 1080
   },
   {
+    "id": "vacuform-helmet-halves",
+    "title": "Vacuformed helmet halves",
+    "category": "props",
+    "spec": "Vacuum formed \u00b7 .080 styrene \u00b7 16 \u00d7 24 in. bed",
+    "alt": "Two mirrored white helmet halves vacuum formed in styrene sheet, shown side by side",
+    "featured": true,
+    "src": "/work/vacuform-helmet-halves",
+    "width": 1800,
+    "height": 670,
+    "description": "Matched left and right halves pulled on our 16 \u00d7 24 inch forming bed, ready for trimming and assembly."
+  },
+  {
     "id": "slot-03",
     "title": "",
     "category": "uv-printing",
