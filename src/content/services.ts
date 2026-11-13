@@ -15,7 +15,7 @@ export const services: Service[] = [
     short: "Props, themed elements, displays and specialty pieces.",
     body: "Designing and building custom props, themed elements, displays, and specialty pieces for entertainment, attractions, businesses, and personal projects.",
     tags: ["Foam & resin", "Scenic paint", "Steel & wood"],
-    image: "/work/vacuform-helmet-halves",
+    image: null,
   },
   {
     id: "3d-printing",
