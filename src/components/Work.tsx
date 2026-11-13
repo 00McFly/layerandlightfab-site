@@ -109,9 +109,9 @@ function Strip({ onOpen }: { onOpen: (items: WorkItem[], i: number) => void }) {
 
 function Caption({ item }: { item: WorkItem }) {
   return (
-    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4 pt-12 text-left opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent px-4 pb-2.5 pt-7 text-left opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
       <div className="font-display text-[13px] uppercase tracking-[0.12em] text-steel-100">{item.title}</div>
-      {item.spec && <div className="spec mt-0.5">{item.spec}</div>}
+      {item.spec && <div className="spec mt-0.5 truncate">{item.spec}</div>}
     </div>
   );
 }
